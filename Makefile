@@ -1,8 +1,11 @@
 # Juan Sierra Diaz
-all: test
+all: arrays tests
 
-test: linear_search.cpp
-	g++ linear_search.cpp -Wall -o test
+arrays: search_sorting_arrays.cpp
+	g++ search_sorting_arrays.cpp -Wall -o ArrayOps
+
+tests: test_scores.cpp
+	g++ test_scores.cpp -Wall -o Tests	
 
 
 
