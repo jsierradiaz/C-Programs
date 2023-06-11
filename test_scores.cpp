@@ -6,6 +6,7 @@
 #include<cstring>
 #include<cctype>
 #include<cstdlib>
+#include <limits> 
 using namespace std;
 
 #define MAX 10
@@ -31,6 +32,8 @@ int main () {
         do {
             cout << "How many tests scores do you want to enter? ";
             cin >> count;
+            cin.clear(); //Clear the buffer of the BAD input
+  		    cin.ignore(256,'\n'); //^
 
 
         }while(!isPositive(count)); // need to define
@@ -104,6 +107,15 @@ void inputTestScores(int scores[], int size){
     for(index = 0; index <= size - 1; index++){
         cout << "Enter test score number " << (index + 1) << ": ";
         cin >> scores[index];
+        while (!std::cin.good())
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Enter test score number " << (index + 1) << ": ";
+            cin >> scores[index];
+            
+        }
+
     }
 }
 
